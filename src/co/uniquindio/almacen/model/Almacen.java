@@ -9,6 +9,8 @@ public class Almacen {
 
 	List<Persona> listaPersonas = new ArrayList<>();
 	List<PersonaNatural> listaPersonasNaturales = new ArrayList<>();
+	List<PersonaJuridica> listaPersonasJuridicas = new ArrayList<>();
+	List<Producto> listaProductos = new ArrayList<>();
 
 
 	public boolean buscarPersona (String telefono){

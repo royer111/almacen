@@ -1,6 +1,12 @@
 package co.uniquindio.almacen.controller;
 
 import java.net.URL;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -16,11 +22,135 @@ public class AlmacenController implements Initializable{
 		this.stage = primaryStage;
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		ObservableList<String> lista = FXCollections.observableArrayList("Cliente juridico", "Cliente natural");
-		tipoCliente.setItems(lista);
 
-	}
+	 @FXML
+	    private Button btnAgregar;
+
+	    @FXML
+	    private Button btnGuardarProducto;
+
+	    @FXML
+	    private ComboBox<?> comboPaisOrigen;
+
+	    @FXML
+	    private ComboBox<String> comboTipoCliente;
+
+	    @FXML
+	    private ComboBox<?> comboTipoProducto;
+
+	    @FXML
+	    private TextField fieldApellidos;
+
+	    @FXML
+	    private TextField fieldCantidadExistencia;
+
+	    @FXML
+	    private TextField fieldCodigoAprobacion;
+
+	    @FXML
+	    private TextField fieldDescripcion;
+
+	    @FXML
+	    private TextField fieldDireccion;
+
+	    @FXML
+	    private TextField fieldEmail;
+
+	    @FXML
+	    private TextField fieldFechaEnvasado;
+
+	    @FXML
+	    private TextField fieldFechaVencimiento;
+
+	    @FXML
+	    private TextField fieldNacimiento;
+
+	    @FXML
+	    private TextField fieldNit;
+
+	    @FXML
+	    private TextField fieldNombre;
+
+	    @FXML
+	    private TextField fieldPesoEnvase;
+
+	    @FXML
+	    private TextField fieldProducto;
+
+	    @FXML
+	    private TextField fieldTelefono;
+
+	    @FXML
+	    private TextField fieldTemperaturaRecomendada;
+
+	    @FXML
+	    private TextField fieldValorUnitario;
+
+	    @FXML
+	    private Label txtApellidos;
+
+	    @FXML
+	    private Label txtDireccion;
+
+	    @FXML
+	    private Label txtEmail;
+
+	    @FXML
+	    private Label txtFechaNacimiento;
+
+	    @FXML
+	    private Label txtNit;
+
+	    @FXML
+	    private Label txtNombre;
+
+	    @FXML
+	    private Label txtTelefono;
+
+
+	    @FXML
+	    void esconderCamposClientesEvent(ActionEvent event) {
+	    	if(comboTipoCliente.getSelectionModel().getSelectedItem().equals("Cliente natural")){
+	    		fieldNacimiento.setVisible(true);
+				fieldEmail.setVisible(true);
+				txtFechaNacimiento.setVisible(true);
+				txtEmail.setVisible(true);
+				txtNit.setVisible(false);
+				fieldNit.setVisible(false);
+
+	    	}
+	    	else if(comboTipoCliente.getSelectionModel().getSelectedItem().equals("Cliente juridico")){
+	    		fieldNit.setVisible(true);
+				txtNit.setVisible(true);
+				fieldNacimiento.setVisible(false);
+				fieldEmail.setVisible(false);
+				txtFechaNacimiento.setVisible(false);
+				txtEmail.setVisible(false);
+
+	    	}
+	    }
+
+	    @FXML
+	    void agregarEvent(ActionEvent event) {
+
+	    }
+
+	    @FXML
+	    void guardarEvent(ActionEvent event) {
+
+	    }
+
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			ObservableList<String> lista = FXCollections.observableArrayList("Cliente juridico", "Cliente natural");
+			comboTipoCliente.setItems(lista);
+			fieldNit.setVisible(false);
+			fieldNacimiento.setVisible(false);
+			fieldEmail.setVisible(false);
+			txtFechaNacimiento.setVisible(false);
+			txtEmail.setVisible(false);
+			txtNit.setVisible(false);
+
+		}
 
 }

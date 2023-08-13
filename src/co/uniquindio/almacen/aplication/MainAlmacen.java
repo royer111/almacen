@@ -11,7 +11,7 @@ public class MainAlmacen extends Application{
 	@Override
 	public void start(Stage primaryStage)   {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/concesionario/views/LogConcesionario.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/uniquindio/almacen/views/AlmacenViews.fxml"));
 			Parent root = loader.load();
 	        Scene scene = new Scene(root);
 	        primaryStage.setScene(scene);
