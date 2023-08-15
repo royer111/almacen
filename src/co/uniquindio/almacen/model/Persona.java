@@ -1,51 +1,32 @@
 package co.uniquindio.almacen.model;
 
 public class Persona {
-
-	private String nombre;
+	private String nombres;
 	private String apellidos;
-	private String direccion;
-	private String telefono;
-
-	public Persona(String nombre, String apellidos, String direccion, String telefono) {
+	private String identificacion;
+	public Persona(String nombres, String apellidos, String identificacion) {
 		super();
-		this.nombre = nombre;
+		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.direccion = direccion;
-		this.telefono = telefono;
+		this.identificacion = identificacion;
 	}
-
-	public String getNombre() {
-		return nombre;
+	public String getNombres() {
+		return nombres;
 	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
 	}
-
 	public String getApellidos() {
 		return apellidos;
 	}
-
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
-	public String getDireccion() {
-		return direccion;
+	public String getIdentificacion() {
+		return identificacion;
 	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
 	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
 
 }

@@ -1,14 +1,21 @@
 package co.uniquindio.almacen.controller;
 
 import java.net.URL;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
+import co.uniquindio.almacen.model.PersonaClienteNatural;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -16,6 +23,7 @@ import javafx.stage.Stage;
 
 public class AlmacenController implements Initializable{
 
+	ModelFactoryController mfm = ModelFactoryController.getInstance();
 	private Stage stage;
 
 	public void setStage(Stage primaryStage) {
@@ -84,7 +92,12 @@ public class AlmacenController implements Initializable{
 	    private TextField fieldTemperaturaRecomendada;
 
 	    @FXML
+
 	    private TextField fieldValorUnitario;
+
+	    @FXML
+	    private TextField fieldIdentificacion;
+
 
 	    @FXML
 	    private Label txtApellidos;
@@ -130,8 +143,32 @@ public class AlmacenController implements Initializable{
 	    	}
 	    }
 
+		List<PersonaClienteNatural> listaPersonasNaturales = new ArrayList<>();
+
 	    @FXML
 	    void agregarEvent(ActionEvent event) {
+	    	String nombre = fieldNombre.getText();
+	    	String apellidos = fieldApellidos.getText();
+	    	String direccion = fieldDireccion.getText();
+	    	String telefono = fieldTelefono.getText();
+	    	String nacimiento = fieldNacimiento.getText();
+	    	String email = fieldEmail.getText();
+	    	String id = fieldIdentificacion.getText();
+	    	PersonaClienteNatural personaNatural = null;
+	    	if(comboTipoCliente.getSelectionModel().getSelectedItem().equals("Cliente natural")){
+	    		personaNatural = mfm.crearPersonaNatural( nombre,  apellidos,  id,  direccion,
+	    				 telefono,  email,  nacimiento);
+	    		listaPersonasNaturales.add(personaNatural);
+	    		fieldNombre.setText("");
+	    		fieldApellidos.setText("");
+	    		fieldDireccion.setText("");
+	    		fieldTelefono.setText("");
+	    		fieldNacimiento.setText("");
+	    		fieldEmail.setText("");
+
+	    	}
+    		JOptionPane.showMessageDialog(null, personaNatural.getNombres() + personaNatural.getApellidos() + personaNatural.getIdentificacion());
+
 
 	    }
 

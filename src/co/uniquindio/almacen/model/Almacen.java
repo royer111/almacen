@@ -4,37 +4,35 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 
 public class Almacen {
 
-	List<Persona> listaPersonas = new ArrayList<>();
-	List<PersonaNatural> listaPersonasNaturales = new ArrayList<>();
-	List<PersonaJuridica> listaPersonasJuridicas = new ArrayList<>();
+	List<Cliente> listaPersonas = new ArrayList<>();
+	List<PersonaClienteNatural> listaPersonasNaturales = new ArrayList<>();
+	List<PersonaClienteJuridico> listaPersonasJuridicas = new ArrayList<>();
 	List<Producto> listaProductos = new ArrayList<>();
 
 
 	public boolean buscarPersona (String telefono){
 		boolean condicion = false;
-		for (Persona persona : listaPersonas) {
+		for (Cliente persona : listaPersonas) {
 			if(persona.getTelefono().equals(telefono)){
-				condicion = true;
+		 		condicion = true;
 			}
 		}
 		return condicion;
 	}
 
-	public PersonaNatural agregarPersonasNaturales (String email, Date fechaNacimiento, String nombre, String apellidos, String direccion, String telefono){
-		PersonaNatural persona1 = null;
-		for (PersonaNatural personaNatural : listaPersonasNaturales) {
-			if (buscarPersona(telefono)){
-				persona1 = personaNatural;
-				listaPersonasNaturales.add(personaNatural);
-			}
-			else{
-				persona1 = new PersonaNatural(email, fechaNacimiento, nombre, apellidos, direccion, telefono);
-			    listaPersonasNaturales.add(persona1);
-			}
-		}
+	public PersonaClienteNatural agregarPersonasNaturales (String nombres, String apellidos, String identificacion, String direccion,
+			String telefono, String email, String fechaNacimiento){
+			PersonaClienteNatural persona1 = new PersonaClienteNatural( nombres,  apellidos,  identificacion,  direccion,
+   				 telefono,  email,  fechaNacimiento);
+			listaPersonasNaturales.add(persona1);
+			JOptionPane.showMessageDialog(null, "Cliente creado");
+
+
 		return persona1;
 	}
 
