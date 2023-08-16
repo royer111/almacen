@@ -36,6 +36,17 @@ public class Almacen {
 		return persona1;
 	}
 
+	public PersonaClienteJuridico agregarPersonasJuridicas (String nombres, String apellidos, String identificacion, String direccion,
+			String telefono, String nit){
+			PersonaClienteJuridico persona1 = new PersonaClienteJuridico( nombres,  apellidos,  identificacion,  direccion,
+   				 telefono, nit);
+			listaPersonasJuridicas.add(persona1);
+			JOptionPane.showMessageDialog(null, "Cliente creado");
+
+
+		return persona1;
+	}
+
 
 
 }

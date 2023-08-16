@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import co.uniquindio.almacen.model.PersonaClienteJuridico;
 import co.uniquindio.almacen.model.PersonaClienteNatural;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,7 +45,7 @@ public class AlmacenController implements Initializable{
 	    private ComboBox<String> comboTipoCliente;
 
 	    @FXML
-	    private ComboBox<?> comboTipoProducto;
+	    private ComboBox<String> comboTipoProducto;
 
 	    @FXML
 	    private TextField fieldApellidos;
@@ -144,6 +145,7 @@ public class AlmacenController implements Initializable{
 	    }
 
 		List<PersonaClienteNatural> listaPersonasNaturales = new ArrayList<>();
+		List<PersonaClienteJuridico> listaPersonasJuridicos = new ArrayList<>();
 
 	    @FXML
 	    void agregarEvent(ActionEvent event) {
@@ -155,25 +157,42 @@ public class AlmacenController implements Initializable{
 	    	String email = fieldEmail.getText();
 	    	String id = fieldIdentificacion.getText();
 	    	PersonaClienteNatural personaNatural = null;
+	    	PersonaClienteJuridico personaJuridica = null;
+	    	String nit = fieldNit.getText();
 	    	if(comboTipoCliente.getSelectionModel().getSelectedItem().equals("Cliente natural")){
 	    		personaNatural = mfm.crearPersonaNatural( nombre,  apellidos,  id,  direccion,
 	    				 telefono,  email,  nacimiento);
 	    		listaPersonasNaturales.add(personaNatural);
 	    		fieldNombre.setText("");
 	    		fieldApellidos.setText("");
+	    		fieldIdentificacion.setText("");
 	    		fieldDireccion.setText("");
 	    		fieldTelefono.setText("");
 	    		fieldNacimiento.setText("");
 	    		fieldEmail.setText("");
+	    		JOptionPane.showMessageDialog(null, personaNatural.getNombres() + personaNatural.getApellidos() + personaNatural.getIdentificacion());
 
 	    	}
-    		JOptionPane.showMessageDialog(null, personaNatural.getNombres() + personaNatural.getApellidos() + personaNatural.getIdentificacion());
+	    	else if (comboTipoCliente.getSelectionModel().getSelectedItem().equals("Cliente juridico")){
+	    		personaJuridica = mfm.crearPersonaJuridico(nombre, apellidos, id, direccion, telefono, nit);
+	    	    fieldNombre.setText("");
+	    		fieldApellidos.setText("");
+	    		fieldDireccion.setText("");
+	    		fieldTelefono.setText("");
+	    		fieldNit.setText("");
+	    		fieldIdentificacion.setText("");
+	    		listaPersonasJuridicos.add(personaJuridica);
+	    		JOptionPane.showMessageDialog(null, personaJuridica.getNombres() + personaJuridica.getApellidos() + personaJuridica.getIdentificacion());
+
+	    	}
 
 
 	    }
 
 	    @FXML
 	    void guardarEvent(ActionEvent event) {
+	    	String producto = fieldProducto.getText();
+	    	double valroUnitario = Double.parseDouble(fieldValorUnitario.getText());
 
 	    }
 

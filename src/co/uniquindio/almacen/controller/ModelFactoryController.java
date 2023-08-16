@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import co.uniquindio.almacen.model.Almacen;
+import co.uniquindio.almacen.model.PersonaClienteJuridico;
 import co.uniquindio.almacen.model.PersonaClienteNatural;
 
 public class ModelFactoryController {
@@ -52,6 +53,13 @@ public class ModelFactoryController {
 			String telefono, String email, String fechaNacimiento){
 		PersonaClienteNatural cliente = (almacen.agregarPersonasNaturales( nombres,  apellidos,  identificacion,  direccion,
 				 telefono,  email,  fechaNacimiento));
+		return cliente;
+	}
+
+	public PersonaClienteJuridico crearPersonaJuridico (String nombres, String apellidos, String identificacion, String direccion,
+			String telefono, String nit){
+		PersonaClienteJuridico cliente = (almacen.agregarPersonasJuridicas( nombres,  apellidos,  identificacion,  direccion,
+  				 telefono, nit));
 		return cliente;
 	}
 
