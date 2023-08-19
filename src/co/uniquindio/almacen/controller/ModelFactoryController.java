@@ -4,8 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import co.uniquindio.almacen.model.Almacen;
+import co.uniquindio.almacen.model.PaisOrigen;
 import co.uniquindio.almacen.model.PersonaClienteJuridico;
 import co.uniquindio.almacen.model.PersonaClienteNatural;
+import co.uniquindio.almacen.model.Producto;
+import co.uniquindio.almacen.model.ProductoEnvasado;
+import co.uniquindio.almacen.model.ProductoPerecedero;
+import co.uniquindio.almacen.model.ProductoRefrigerado;
 
 public class ModelFactoryController {
 	  Almacen almacen = null;
@@ -61,6 +66,26 @@ public class ModelFactoryController {
 		PersonaClienteJuridico cliente = (almacen.agregarPersonasJuridicas( nombres,  apellidos,  identificacion,  direccion,
   				 telefono, nit));
 		return cliente;
+	}
+
+	public ProductoEnvasado crearProductoEnvasado(String producto, String descripcion, double valorUnitario,
+			int cantidadExistencia, String fechaEnvasado, String pesoEnvase, PaisOrigen pais) {
+		ProductoEnvasado productoEnvasado = almacen.crearProductoEvasado(producto, descripcion, valorUnitario, cantidadExistencia, fechaEnvasado, pesoEnvase, pais);
+		return productoEnvasado;
+	}
+
+	public ProductoPerecedero crearProductoPerecedero(String producto, String descripcion, double valorUnitario,
+			int cantidadExistencia, String fechaVencimiento) {
+
+		ProductoPerecedero productoPerecedero = almacen.crearProductoPerecedero(producto, descripcion, valorUnitario, cantidadExistencia, fechaVencimiento);
+		return productoPerecedero;
+	}
+
+	public ProductoRefrigerado crearProductoRefrigerado(String producto, String descripcion, double valorUnitario,
+			int cantidadExistencia, String codigoAprobacion, String temperatura) {
+		ProductoRefrigerado productoRefrigerado = almacen.crearProductoRefirgerado(producto, descripcion, valorUnitario, cantidadExistencia, codigoAprobacion, temperatura);
+
+		return productoRefrigerado;
 	}
 
 /**

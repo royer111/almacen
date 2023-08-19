@@ -15,6 +15,60 @@ public class Almacen {
 	List<Producto> listaProductos = new ArrayList<>();
 
 
+	public Almacen() {
+		super();
+	}
+
+
+
+	public List<Cliente> getListaPersonas() {
+		return listaPersonas;
+	}
+
+
+
+	public void setListaPersonas(List<Cliente> listaPersonas) {
+		this.listaPersonas = listaPersonas;
+	}
+
+
+
+	public List<PersonaClienteNatural> getListaPersonasNaturales() {
+		return listaPersonasNaturales;
+	}
+
+
+
+	public void setListaPersonasNaturales(List<PersonaClienteNatural> listaPersonasNaturales) {
+		this.listaPersonasNaturales = listaPersonasNaturales;
+	}
+
+
+
+	public List<PersonaClienteJuridico> getListaPersonasJuridicas() {
+		return listaPersonasJuridicas;
+	}
+
+
+
+	public void setListaPersonasJuridicas(List<PersonaClienteJuridico> listaPersonasJuridicas) {
+		this.listaPersonasJuridicas = listaPersonasJuridicas;
+	}
+
+
+
+	public List<Producto> getListaProductos() {
+		return listaProductos;
+	}
+
+
+
+	public void setListaProductos(List<Producto> listaProductos) {
+		this.listaProductos = listaProductos;
+	}
+
+
+
 	public boolean buscarPersona (String telefono){
 		boolean condicion = false;
 		for (Cliente persona : listaPersonas) {
@@ -47,6 +101,26 @@ public class Almacen {
 		return persona1;
 	}
 
+	public ProductoEnvasado crearProductoEvasado (String nombre, String descripcion, double valorUnitario, int cantidaExistencia,
+			String fechaEnvasado, String pesoEnvase, PaisOrigen paisOrigen){
+		    ProductoEnvasado producto = new ProductoEnvasado(nombre, descripcion, valorUnitario, cantidaExistencia, fechaEnvasado, pesoEnvase, paisOrigen);
+		    listaProductos.add(producto);
+		    return producto;
+	}
+
+	public ProductoPerecedero crearProductoPerecedero (String nombre, String descripcion, double valorUnitario, int cantidaExistencia,
+			String fechaVencimiento){
+		ProductoPerecedero producto = new ProductoPerecedero(nombre, descripcion, valorUnitario, cantidaExistencia, fechaVencimiento);
+		listaProductos.add(producto);
+		return producto;
+	}
+
+	public ProductoRefrigerado crearProductoRefirgerado (String nombre, String descripcion, double valorUnitario, int cantidaExistencia,
+		String codigoAprobacion, String temperaturaRecomendada){
+		ProductoRefrigerado producto = new ProductoRefrigerado(nombre, descripcion, valorUnitario, cantidaExistencia, codigoAprobacion, temperaturaRecomendada);
+		listaProductos.add(producto);
+		return producto;
+	}
 
 
 }
